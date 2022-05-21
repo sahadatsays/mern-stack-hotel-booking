@@ -1,9 +1,10 @@
 import express from "express"
+import { verifyToken } from "../../utils/verifyToken.js";
 
 const router = express.Router();
-
-router.get('/', (req, res) => {
-     res.send('Users');
+verifyToken
+router.get('/check-auth', verifyToken, (req, res, next) => {
+     res.send('auth');
 })
 
 export default router;

@@ -31,14 +31,13 @@ mongoose.connection.on("connected", () => {
 
 /* Routes // Middleware */
 app.use(express.json())
+/* Error middleware */
+app.use(cookieParser())
 
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", usersRoute);
 app.use("/api/v1/hotels", hotelsRoute);
 app.use("/api/v1/rooms", roomesRoute);
-
-/* Error middleware */
-app.use(cookieParser())
 
 app.use((error, req, res, next) => {
      const errorStatus = error.status || 500
